@@ -1,13 +1,10 @@
-<h1>
-  senden
-  <img src="https://raw.githubusercontent.com/fru/senden/main/logo.png" align="right" height="70" alt="Logo" />
-</h1>
+<img src="https://raw.githubusercontent.com/fru/senden/main/logo.png" align="right" height="58" alt="Logo" />
 
-#### ⭐ Star on GitHub — it motivates me a lot!
+#### ⭐ Star us on GitHub — it motivates us a lot!
 
-## Teaser
+# senden
 
-Use your TS server definition, to write typesafe client code. Yes - like tRPC but RESTfull, with custamizable paths and familiar HTTP methods.
+Use your TS server definition, to write typesafe client code. Yes - like tRPC but RESTfull. We have custamizable paths and familiar HTTP methods.
 
 ```ts
 import { server, RouteClient } from "senden";
@@ -43,7 +40,7 @@ This api will now accept the following requests:
 | `DELETE` | `warehouse/order/123`         | Delete it                    |
 | `GET`    | `warehouse/order/list?page=0` | Get the first page of orders |
 
-And finally, we can use it in our frontend code with auto-completion and type-safety.
+And finally, we can use it in frontend code with auto-completion and type-safety.
 
 ```ts
 import { client } from "senden";
@@ -55,10 +52,4 @@ const result = await api.warehouse.order.$post({
   name: "My Order",
   ...
 });
-
-## Refernces
-
-https://github.com/jlalmes/trpc-openapi
-
-https://www.reddit.com/r/github/comments/uulygm/what_are_some_really_nice_github_profile_readmes/
 ```
