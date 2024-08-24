@@ -3,6 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "prettier": {
+    "printWidth": 160,
+    "htmlWhitespaceSensitivity": "ignore",
+    "vueIndentScriptAndStyle": true,
+    "importOrderSeparation": false,
+    "importOrderSortSpecifiers": true
+  },
   "scripts": {
     "test": "jest",
     "test:coverage": "jest --coverage",
