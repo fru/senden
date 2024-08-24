@@ -1,6 +1,6 @@
 <img src="https://raw.githubusercontent.com/fru/senden/main/logo.png" align="right" height="68" alt="Logo" />
 
-#### ⭐ Star us on GitHub — it motivates us a lot!
+⭐ Star us on GitHub — it motivates us a lot!
 
 # senden
 
