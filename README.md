@@ -43,7 +43,7 @@ This api will now accept the following requests:
 | `DELETE` | `warehouse/order/123`         | Delete it                    |
 | `GET`    | `warehouse/order/list?page=0` | Get the first page of orders |
 
-And finally, we can use it in frontend code with auto-completion and type-safety.
+And finally, in the frontend code we have auto-completion and type-safety for the REST API.
 
 ```ts
 import { client } from "senden";
@@ -56,3 +56,15 @@ const result = await api.warehouse.order.$post({
   ...
 });
 ```
+
+## Getting started
+
+```sh
+npx degit github:fru/senden/examples/express
+```
+
+```sh
+npx degit github:fru/senden/examples/hono-on-cloudflare
+```
+
+## Documentation
