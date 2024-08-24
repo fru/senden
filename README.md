@@ -1,10 +1,8 @@
+<h4>
+  <span> ⭐ Star us on GitHub — it motivates us a lot!</span>
 
-  <h4>
-    <span>
-    ⭐ Star us on GitHub — it motivates us a lot!
-    </span>
-    <img src="https://raw.githubusercontent.com/fru/senden/main/logo.png" align="right" height="68" alt="Logo" />
-  </h4>
+  <img src="https://raw.githubusercontent.com/fru/senden/main/logo.png" align="right" height="68" alt="Logo" />
+</h4>
 
 # senden
 
@@ -16,16 +14,17 @@ import { server, RouteClient } from "senden";
 const routes = {
   warehouse: {
     order: {
+
       $post: async (order: Order) => { ... }),
+
+      list: {
+        $get: async (data: {$page: number}) => { ... }),
+      },
 
       $id: {
         $get: async (data: {$id: number}) => { ... }),
         $delete: async (data: {$id: number}) => { ... }),
-      }
-
-      list: {
-        $get: async (data: {$page: number}) => { ... }),
-      }
+      },
     },
   },
 };
