@@ -1,9 +1,9 @@
 <h1>
-  📨 senden
+  senden
   <img src="https://raw.githubusercontent.com/fru/senden/main/logo.png" align="right" height="70" alt="Logo" />
 </h1>
 
-### ⭐ Star on GitHub — it motivates me a lot!
+#### ⭐ Star on GitHub — it motivates me a lot!
 
 ## Teaser
 
