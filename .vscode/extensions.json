@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "Supermaven.supermaven",
+    "YoavBls.pretty-ts-errors",
+    "esbenp.prettier-vscode",
+    "mhutchie.git-graph",
+    "GitHub.vscode-github-actions",
+    "wix.vscode-import-cost",
+    "christian-kohler.npm-intellisense"
+  ]
+}
