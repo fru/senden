@@ -1,5 +1,5 @@
 <h4>
-  <img src="https://raw.githubusercontent.com/fru/senden/main/logo.png" align="right" height="68" alt="Logo" />
+  <img src="https://raw.githubusercontent.com/fru/senden/main/docs/public/logo.png" align="right" height="68" alt="Logo" />
   
   <span> ⭐ Star on GitHub — it motivates us a lot!</span>
 </h4>

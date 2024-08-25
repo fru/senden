@@ -6,6 +6,7 @@
     "mhutchie.git-graph",
     "GitHub.vscode-github-actions",
     "wix.vscode-import-cost",
-    "christian-kohler.npm-intellisense"
+    "christian-kohler.npm-intellisense",
+    "astro-build.astro-vscode"
   ]
 }
