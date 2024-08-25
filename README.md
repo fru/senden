@@ -60,12 +60,12 @@ const result = await api.warehouse.order.$post({
 ## Getting started
 
 ```sh
-npx degit github:fru/senden/examples/express
+npx degit github:fru/senden/examples/express senden-example-express
 ```
 https://stackblitz.com/github/fru/senden/tree/main/examples/express?file=package.json
 
 ```sh
-npx degit github:fru/senden/examples/hono-on-cloudflare
+npx degit github:fru/senden/examples/hono-on-cloudflare senden-example-hono-on-cf
 ```
 
 ## Documentation
