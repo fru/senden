@@ -1,12 +1,15 @@
 {
   "recommendations": [
     "Supermaven.supermaven",
-    "YoavBls.pretty-ts-errors",
-    "esbenp.prettier-vscode",
     "mhutchie.git-graph",
     "GitHub.vscode-github-actions",
+
+    "esbenp.prettier-vscode",
+    "YoavBls.pretty-ts-errors",
     "wix.vscode-import-cost",
     "christian-kohler.npm-intellisense",
-    "astro-build.astro-vscode"
+    "formulahendry.auto-rename-tag",
+    "jock.svg",
+    "astro-build.astro-vscode",
   ]
 }
