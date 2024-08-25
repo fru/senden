@@ -62,6 +62,7 @@ const result = await api.warehouse.order.$post({
 ```sh
 npx degit github:fru/senden/examples/express
 ```
+https://stackblitz.com/github/fru/senden/tree/main/examples/express?file=package.json
 
 ```sh
 npx degit github:fru/senden/examples/hono-on-cloudflare
