@@ -9,7 +9,9 @@
     "wix.vscode-import-cost",
     "christian-kohler.npm-intellisense",
     "formulahendry.auto-rename-tag",
+
     "jock.svg",
     "astro-build.astro-vscode",
+    "EraserLabs.eraserlabs"
   ]
 }
