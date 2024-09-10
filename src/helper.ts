@@ -1,7 +1,5 @@
-import { Func, M, Obj } from "./types";
+import type { Func, M } from "./types.d.ts";
 import { z } from "zod";
-
-type NoInfer<T> = [T][T extends any ? 0 : never];
 
 // --- QUERY ---
 
@@ -25,7 +23,7 @@ type OpClient<I, O> = (input: I) => Promise<O>;
 // --- ROUTE TYPES ---
 
 export function createRouteBuiler<Context>() {
-  return internalCreateRouteBuiler(undefined, undefined);
+  return internalCreateRouteBuiler<Context>(undefined, undefined);
 }
 
 function internalCreateRouteBuiler<Context>(cumulateI?: z.ZodTypeAny, cumulateO?: z.ZodTypeAny) {
