@@ -1,4 +1,4 @@
-import type { RouteDefinition } from "./types";
+import type { RouteDefinition } from "./types.d.ts";
 
 export class SendenServer<T extends LooseRequestContext> {
   constructor(public readonly root: string) {
