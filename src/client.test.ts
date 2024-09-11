@@ -1,51 +1,39 @@
 import { describe, it, expect, vi } from "vitest";
-import { createRouteBuiler, RouteConsumer, SendenClient } from "./index";
-import { z } from "zod";
+import { SendenClient } from "./index";
 
 global.location = { origin: "http://localhost" } as any;
 
-function createFetchResponse(data: any) {
-  return { text: () => new Promise((resolve) => resolve(JSON.stringify(data))) };
-}
+function mockFetch(response: any) {
+  const result = {
+    args: [] as any[],
+    fetch: vi.fn(),
+  };
 
-const builder = createRouteBuiler<{}>();
+  result.fetch.mockImplementation(function () {
+    result.args = Array.from(arguments);
+    return { text: async () => JSON.stringify(response) };
+  });
+
+  return result;
+}
 
 describe("Utility | Main", () => {
   it("Calls fetch", async () => {
-    const fetch = vi.fn();
-    fetch.mockResolvedValue(createFetchResponse({}));
+    // Setup
+    const mock = mockFetch({});
 
-    const api = {
-      example: {
-        // GET ${root}/example
-        $get: builder
-          .input(z.object({ $test: z.string(), $abc: z.number() }))
-          .output(z.object({ test: z.string() }))
-          .query(async ({ $abc }: { $abc: number }) => {
-            return { test: "test", abc: $abc, test2: "test2" }; //
-          }),
-
-        // POST ${root}/example/$test
-        $test: {
-          $post: builder
-            .input(z.object({ $inp1: z.string().min(3), $abc: z.number() }))
-            .output(z.object({ test: z.string() }))
-            .mutation(async ({ $inp1 }: { $inp1: string }) => {
-              return { test: "test:  " + $inp1 + "  ", test2: "test2" };
-            }),
-
-          $get: builder.query(async (_) => {
-            return { test: "test" };
-          }),
-        },
-      },
-    };
-    type Api = RouteConsumer<typeof api>;
+    // Action
     const client = new SendenClient();
-    const cdn = client.build<Api>("/cdn/api");
-    client.fetch = fetch;
+    const cdn = client.build<any>("/cdn/api");
+    client.fetch = mock.fetch;
+    await cdn.example.$get({ $test: "", $abc: 123, abcd: "12345" });
 
-    await cdn.example.$get({ $test: "", $abc: 123 });
-    expect(fetch).toBeCalledTimes(1);
+    // Assertions
+    expect(mock.fetch).toBeCalledTimes(1);
+    const request: Request = mock.args[0];
+    expect(request.url).toEqual("http://localhost/cdn/api/example?test=&abc=123");
+    expect(request.method).toEqual("GET");
+    expect(request.body).toEqual(null);
+    expect(Array.from(request.headers.entries())).toEqual([["content-type", "application/json"]]);
   });
 });

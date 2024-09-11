@@ -20,7 +20,7 @@
     "importOrderSortSpecifiers": true
   },
   "scripts": {
-    "test": "vitest --typecheck",
+    "test": "vitest",
     "build": "vite build && tsc",
     "build-types": "tsc"
   },

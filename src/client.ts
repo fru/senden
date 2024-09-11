@@ -102,7 +102,7 @@ export class SendenClient {
 
 function isStringAmbiguous(value: string) {
   // LITERALS
-  if (value === "") return true;
+  if (value === "") return false;
   if (value === "null" || value === "undefined") return true;
   if (value === "true" || value === "false") return true;
   // JSON
