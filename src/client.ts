@@ -1,4 +1,4 @@
-import type { Obj } from "./types.d.ts";
+import type { Obj } from "../src/types.d.ts";
 
 export class SendenClient {
   build<T>(root: string) {

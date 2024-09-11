@@ -1,4 +1,4 @@
-import type { Func, M } from "./types.d.ts";
+import type { Func, M } from "../src/types.d.ts";
 // @ts-ignore peer dependency
 import { z } from "zod";
 

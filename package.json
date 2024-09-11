@@ -7,7 +7,8 @@
   "exports": {
     ".": {
       "import": "./dist/senden.js",
-      "require": "./dist/senden.umd.cjs"
+      "require": "./dist/senden.umd.cjs",
+      "types": "./dist/index.d.ts"
     }
   },
   "prettier": {
@@ -19,7 +20,8 @@
   },
   "scripts": {
     "test": "vitest --typecheck",
-    "build": "tsc && vite build"
+    "build": "vite build && tsc",
+    "build-types": "tsc"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
