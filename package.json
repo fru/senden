@@ -1,9 +1,15 @@
 {
   "name": "senden",
   "private": false,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
-  "main": "src/index.ts",
+  "module": "dist/senden.js",
+  "exports": {
+    ".": {
+      "import": "./dist/senden.js",
+      "require": "./dist/senden.umd.cjs"
+    }
+  },
   "prettier": {
     "printWidth": 160,
     "htmlWhitespaceSensitivity": "ignore",

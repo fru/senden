@@ -3,7 +3,7 @@ import type { Obj } from "./types.d.ts";
 export class SendenClient {
   build<T>(root: string) {
     const target = { $senden: this };
-    return new Proxy(target, { get: buildGet(this, root, []) }) as T & typeof target;
+    return new Proxy(target, { get: buildGet(this, root, []) }) as T & { $senden: SendenClient };
   }
 
   operators = {

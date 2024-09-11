@@ -6,8 +6,16 @@ export default defineConfig({
   build: {
     lib: {
       name: "senden",
-      entry: resolve(__dirname, "src/main.ts"),
+      entry: resolve(__dirname, "src/index.ts"),
       formats: ["es", "umd"],
+    },
+    rollupOptions: {
+      external: ["zod"],
+      output: {
+        globals: {
+          zod: "zod",
+        },
+      },
     },
   },
   resolve: {

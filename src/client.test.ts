@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { createRouteBuiler, RouteConsumer, SendenClient } from "./index.ts";
+import { createRouteBuiler, RouteConsumer, SendenClient } from "./index";
 import { z } from "zod";
 
 global.location = { origin: "http://localhost" } as any;

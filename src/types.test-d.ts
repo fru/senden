@@ -1,5 +1,5 @@
 import { expectTypeOf } from "vitest";
-import { createRouteBuiler, RouteConsumer } from "./index.ts";
+import { createRouteBuiler, RouteConsumer } from "./index";
 import { z } from "zod";
 
 const builder = createRouteBuiler<{}>();

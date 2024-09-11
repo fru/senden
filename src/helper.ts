@@ -1,4 +1,5 @@
 import type { Func, M } from "./types.d.ts";
+// @ts-ignore peer dependency
 import { z } from "zod";
 
 // --- QUERY ---
