@@ -61,14 +61,25 @@ describe("Test Client Fetch Requests", () => {
     await assertFetch(root, call, "GET", expected);
   });
 
-  it("example?test=%2522123%2522&abc=123", async () => {
+  it("example?encode-path", async () => {
+    // Setup
+    global.location = { origin: "http://localhost" } as any;
+    const root = "/cdn/api";
+    const params = { $test: "123", $abc: 123 };
+    const call = (r: any) => r.example.$test.$get(params);
+    // Assert
+    const expected = `http://localhost/cdn/api/example/${encodeURIComponent('"123"')}?abc=123`;
+    await assertFetch(root, call, "GET", expected);
+  });
+
+  it("example?encode-query", async () => {
     // Setup
     global.location = { origin: "http://localhost" } as any;
     const root = "/cdn/api";
     const params = { $test: "123", $abc: 123 };
     const call = (r: any) => r.example.$get(params);
     // Assert
-    const expected = "http://localhost/cdn/api/example?test=%2522123%2522&abc=123";
+    const expected = `http://localhost/cdn/api/example?test=${encodeURIComponent('"123"')}&abc=123`;
     await assertFetch(root, call, "GET", expected);
   });
 
@@ -93,5 +104,51 @@ describe("Test Client Fetch Requests", () => {
     const expected = "http://localhost/cdn/api/example?test=&abc=123";
     const body = { test: "-123", abc: -123 };
     await assertFetch(root, call, "POST", expected, body);
+  });
+
+  it("PUT example?deep", async () => {
+    // Setup
+    global.location = { origin: "http://localhost" } as any;
+    const root = "/cdn/api";
+    const params = { $test: "", $abc: undefined, test: "-123", abc: -123, deep: { json: "123", even: { deeper: "-123" } } };
+    const call = (r: any) => r.example.$put(params);
+    // Assert
+    const expected = "http://localhost/cdn/api/example?test=&abc=undefined";
+    const body = { test: "-123", abc: -123, deep: { json: "123", even: { deeper: "-123" } } };
+    await assertFetch(root, call, "PUT", expected, body);
+  });
+
+  it("PATCH example?test=&abc=123", async () => {
+    // Setup
+    global.location = { origin: "http://localhost" } as any;
+    const root = "/cdn/api";
+    const params = { $test: "", $abc: 123, test: "-123", a: true, b: false, c: undefined, d: null };
+    const call = (r: any) => r.example.$patch(params);
+    // Assert
+    const expected = "http://localhost/cdn/api/example?test=&abc=123";
+    const body = { test: "-123", a: true, b: false, c: undefined, d: null };
+    await assertFetch(root, call, "PATCH", expected, body);
+  });
+
+  it("OPTIONS example", async () => {
+    // Setup
+    global.location = { origin: "http://localhost" } as any;
+    const root = "/cdn/api";
+    const params = { $a: true, $test: ["v1", null], $abc: { deep: "?" } };
+    const call = (r: any) => r.example.$options(params);
+    // Assert
+    const expected = `http://localhost/cdn/api/example?a=true&test=${encodeURIComponent('["v1",null]')}&abc=${encodeURIComponent('{"deep":"?"}')}`;
+    await assertFetch(root, call, "OPTIONS", expected);
+  });
+
+  it("Stringify auto converts undefined to null", async () => {
+    // Setup
+    global.location = { origin: "http://localhost" } as any;
+    const root = "/cdn/api";
+    const params = { $a: [1, undefined] };
+    const call = (r: any) => r.example.$get(params);
+    // Assert
+    const expected = `http://localhost/cdn/api/example?a=${encodeURIComponent("[1,null]")}`;
+    await assertFetch(root, call, "GET", expected);
   });
 });

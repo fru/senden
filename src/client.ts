@@ -26,7 +26,7 @@ export class SendenClient {
 
         const combined = hasBody ? params : { ...body, ...params };
         for (const [key, value] of Object.entries(combined)) {
-          url.searchParams.append(key, this.encodeURIComponent(value));
+          url.searchParams.append(key, this.quoteURIComponent(value) + "");
         }
 
         const req = new Request(url, {
@@ -49,7 +49,7 @@ export class SendenClient {
     const segments = path.map((k) => {
       if (!k.startsWith("$")) return k;
       delete body[k];
-      return this.encodeURIComponent(data[k]);
+      return encodeURIComponent(this.quoteURIComponent(data[k]));
     });
 
     // Move remaining $ properties into params
@@ -93,10 +93,6 @@ export class SendenClient {
     if (typeof d !== "string") return this.JSON.stringify(d);
     if (!this.quoteStringWhenAmbiguous || !isStringAmbiguous(d)) return d;
     return this.JSON.stringify(d);
-  }
-
-  encodeURIComponent(d: unknown) {
-    return encodeURIComponent(this.quoteURIComponent(d));
   }
 }
 
