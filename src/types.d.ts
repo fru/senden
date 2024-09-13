@@ -14,9 +14,9 @@ type RouteMethods<T> = {
 };
 
 // Nested object containing the route definitions
-export type RouteDefinition<T> = RouteMethods<T> & {
-  [segment: string]: RouteDefinition<T>;
-};
+type RouteDefinitions<T> = { [segment: string]: RouteDefinition<T> };
+
+export type RouteDefinition<T> = RouteMethods<T> | RouteDefinitions<T>;
 
 // --- CONSUMER ---
 
