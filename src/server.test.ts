@@ -21,9 +21,10 @@ const simpleApi: RouteDefinition<Request> = {
 describe("Server Check Responses", () => {
   it("example?test=&abc=123", async () => {
     const senden = new SendenServer<Request>("/cdn/api");
-    // TODO "http://localhost/cdn/api?test=&abc=123"
-    // TODO "http://localhost/cdn/api/?test=&abc=123"
-    // TODO "http://localhost/cdn/api/test/?test=&abc=123"
+    // FIXME Senden Server test
+    // "http://localhost/cdn/api?test=&abc=123"
+    // "http://localhost/cdn/api/?test=&abc=123"
+    // "http://localhost/cdn/api/test/?test=&abc=123"
     const simpleContext = new Request("http://localhost/cdn/api/test?test=&abc=123");
     const simpleResponse = await senden.buildHandler(simpleApi)(simpleContext);
     expect(simpleResponse.status).toEqual(200);
