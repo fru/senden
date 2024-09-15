@@ -23,19 +23,19 @@ type OpClient<I, O> = (input: I) => Promise<O>;
 
 // --- ROUTE TYPES ---
 
-export function createRouteBuiler<Context>() {
-  return internalCreateRouteBuiler<Context>(undefined, undefined);
+export function createRouteBuilder<Context>() {
+  return internalCreateRouteBuilder<Context>(undefined, undefined);
 }
 
-function internalCreateRouteBuiler<Context>(cumulateI?: z.ZodTypeAny, cumulateO?: z.ZodTypeAny) {
+function internalCreateRouteBuilder<Context>(cumulateI?: z.ZodTypeAny, cumulateO?: z.ZodTypeAny) {
   const builder: Builder<Context> = {
     input: (i) => {
       let newI = cumulateI ? z.intersection(i, cumulateI) : i;
-      return internalCreateRouteBuiler(newI, cumulateO);
+      return internalCreateRouteBuilder(newI, cumulateO);
     },
     output: (o) => {
       let newO = cumulateO ? z.intersection(o, cumulateO) : o;
-      return internalCreateRouteBuiler(cumulateI, newO);
+      return internalCreateRouteBuilder(cumulateI, newO);
     },
     query: (f) => checked(f),
     mutation: (f) => checked(f),

@@ -63,7 +63,9 @@ export class SendenServer<T extends LooseRequestContext> {
     return found[0];
   }
 
-  searchRoutes(api: RouteDefinition<T>, path: string[], method: string, pathData: any): SearchResult {
+  searchRoutes(routes: RouteDefinition<T>, path: string[], method: string, pathData: any): SearchResult {
+    // Workaround: The cast makes the definition indexable. This function checks the types at runtime.
+    const api = routes as { [key: string]: RouteDefinition<T> };
     const notFunc = (k: string) => !(api[k] instanceof Function);
 
     // End case - No more path, find method

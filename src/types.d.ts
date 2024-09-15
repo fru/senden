@@ -1,7 +1,6 @@
 // --- SHARED ---
 
-export type RouteMethod<T> = (input?: any, context?: T) => any;
-export type RouteMethodSafe<T> = (input?: object, context?: T) => any;
+type RouteMethod<T> = (input: any, context: T) => any;
 
 // Allowed methods to be used in the route definition
 type RouteMethods<T> = {
@@ -15,8 +14,9 @@ type RouteMethods<T> = {
 
 // Nested object containing the route definitions
 type RouteDefinitions<T> = { [segment: string]: RouteDefinition<T> };
-
-export type RouteDefinition<T> = RouteMethods<T> | RouteDefinitions<T>;
+// Workaround: Without the union part, we get e.g.: $get is incompatible with index signature
+// This reads as: (route definitions and route methods) or just the optional route methods
+export type RouteDefinition<T> = (RouteDefinitions<T> & RouteMethods<T>) | RouteMethods<T>;
 
 // --- CONSUMER ---
 

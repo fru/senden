@@ -1,8 +1,8 @@
 import { expectTypeOf } from "vitest";
-import { createRouteBuiler, RouteConsumer } from "./index";
+import { createRouteBuilder, RouteConsumer } from "./index";
 import { z } from "zod";
 
-const builder = createRouteBuiler<{}>();
+const builder = createRouteBuilder<{}>();
 
 test("Server type to RouteConsumer<>", () => {
   const api = {
