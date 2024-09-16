@@ -21,7 +21,7 @@ const simpleApi: RouteDefinition<Request> = {
 describe("Server Check Responses", () => {
   it("example?test=&abc=123", async () => {
     const senden = new SendenServer<Request>("/cdn/api");
-    // FIXME Senden Server test
+    // FIXME -> Senden Server test
     // "http://localhost/cdn/api?test=&abc=123"
     // "http://localhost/cdn/api/?test=&abc=123"
     // "http://localhost/cdn/api/test/?test=&abc=123"
